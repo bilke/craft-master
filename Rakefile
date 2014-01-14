@@ -115,7 +115,7 @@ namespace :craft do
       end
 
       out 'Configuring Git...'
-      out 'What is your new project\'s clone URL (e.g. git@github.com:vigetlabs/project-name.git)?', $prompt
+      out 'What is your new project\'s clone URL (e.g. git@github.com:vigetlabs/your-project-name.git)?', $prompt
 
       git_clone_url = STDIN.gets.chomp
 
