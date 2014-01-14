@@ -2,7 +2,7 @@
 
 Instructions for installing and configuring a new project using [Craft](http://buildwithcraft.com/).
 
-Use of these tools indicate that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read before doing anything else.
+Use of these tools indicates that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read before doing anything else.
 
 
 ## Dependencies
