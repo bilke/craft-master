@@ -117,13 +117,13 @@ namespace :craft do
       out 'Configuring Git...'
       out 'What is your new project\'s clone URL (e.g. git@github.com:vigetlabs/your-project-name.git)?', $prompt
 
-      git_clone_url = STDIN.gets.chomp
+      git_clone_url = STDIN.gets.chomp!
 
       system %Q{git remote set-url origin #{git_clone_url}}
       out "✓ 'origin' is now set to '#{git_clone_url}'!", $notice
 
       out 'Would you like to continue configuring Craft? [Yn]', $prompt
-      case STDIN.gets.chomp
+      case STDIN.gets.chomp!
         when 'Y'
           Rake::Task['craft:setup'].invoke
         else
