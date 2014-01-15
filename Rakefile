@@ -123,11 +123,11 @@ namespace :craft do
       out "✓ 'origin' is now set to '#{git_clone_url}'!", $notice
 
       out 'Would you like to continue configuring Craft? [Yn]', $prompt
-      case STDIN.gets.chomp!
-        when 'Y'
-          Rake::Task['craft:setup'].invoke
-        else
-          out 'Skipping Craft configuration...'
+      if STDIN.gets.chomp! == 'Y'
+        Rake::Task['craft:setup'].invoke
+      else
+        out 'Skipping Craft configuration...'
+        out 'To continue configuring Craft at a later time, run `rake craft:setup`.'
       end
     end
   end
