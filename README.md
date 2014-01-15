@@ -35,7 +35,7 @@ Also, these instructions assume you have a passing familiarity with the command 
 
 To get started, issue the following command to clone this repository, substituting `your-project-name` as appropriate:
 
-	git clone git@github.com:vigetlabs/craft-master.git your-project-name
+	git clone https://github.com/vigetlabs/craft-master.git your-project-name
 
 
 ## Install Dependencies
