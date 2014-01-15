@@ -92,3 +92,15 @@ For convenience, the installer will output a sample bit of code for you to inser
 At this point, you should be able to navigate to `http://your-project-name.dev/admin` and follow the remaining instructions for setting up Craft.
 
 **Congratulations, you're done!**
+
+
+## Authors
+
+- [@jgarber623](https://github.com/jgarber623)
+
+Of course, craft-master wouldn't be possible without the hard work of the fine folks at [Pixel & Tonic](http://pixelandtonic.com/). Thanks!
+
+
+## License
+
+The source code for and documentation relating to craft-master is licensed under the incredibly permissive [MIT License](http://opensource.org/licenses/MIT).
