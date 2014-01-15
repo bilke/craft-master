@@ -119,8 +119,13 @@ namespace :craft do
 
       git_clone_url = STDIN.gets.chomp!
 
-      system %Q{git remote set-url origin #{git_clone_url}}
-      out "✓ 'origin' is now set to '#{git_clone_url}'!", $notice
+      if git_clone_url.empty?
+        system %Q{git remote rm origin}
+        out '! Removing remote \'origin\'. Use `git remote add origin` to configure Git at a later time.', $alert
+      else
+        system %Q{git remote set-url origin #{git_clone_url}}
+        out "✓ 'origin' is now set to '#{git_clone_url}'!", $notice
+      end
 
       out 'Would you like to continue configuring Craft? [Yn]', $prompt
       if STDIN.gets.chomp! == 'Y'
