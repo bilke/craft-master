@@ -9,13 +9,15 @@ $craft_local_src_path = "tmp/#{$craft_remote_src_url.split('/').last}"
 $craft_db_php_path = 'craft/config/db.php'
 $craft_db_yml_path = 'config/database.yml'
 
+$development_server_name = ''
+
 $alert = 31
 $notice = 32
 $prompt = 33
 
 def mysql_connect
   if File.exists?($craft_db_yml_path)
-    config = YAML.load(File.read($craft_db_yml_path))['development']['local_db_settings']
+    config = YAML.load(File.read($craft_db_yml_path))['development']
 
     begin
       connection = Mysql.new(config['server'], config['user'], config['password'])
@@ -38,22 +40,25 @@ end
 namespace :config do
   desc 'Configure database for local development'
   task :create do
-    out 'Generating database configuration files...'
-
     if File.exists?($craft_db_php_path)
       out "! '#{$craft_db_php_path}' already exists! Skipping database configuration...", $alert
     else
-      out 'What is the server name or IP address of your database? (e.g. localhost or 127.0.0.1)?', $prompt
-      db_server = STDIN.gets.chomp!
+      out 'At what URL would you like to access your local Craft site (e.g. your-project-name.dev)?', $prompt
+      $development_server_name = STDIN.gets.chomp!
+
+      out 'Generating database configuration files...'
+
+      out 'What is the server name or IP address of your database (e.g. localhost or 127.0.0.1)?', $prompt
+      development_db_server = STDIN.gets.chomp!
 
       out 'What is the database username?', $prompt
-      db_user = STDIN.gets.chomp!
+      development_db_user = STDIN.gets.chomp!
 
-      out "What is the database password for user '#{db_user}'?", $prompt
-      db_password = STDIN.gets.chomp!
+      out "What is the database password for user '#{development_db_user}'?", $prompt
+      development_db_password = STDIN.gets.chomp!
 
       out 'What is the name of the database?', $prompt
-      db_database = STDIN.gets.chomp!
+      development_db_database = STDIN.gets.chomp!
 
       out "Writing '#{$craft_db_yml_path}'..."
       File.open($craft_db_yml_path, 'w') do |f|
@@ -153,6 +158,22 @@ namespace :craft do
     Rake::Task['config:create'].invoke
     Rake::Task['db:create'].invoke
     Rake::Task['craft:set_folder_permissions'].invoke
+
+    out "Add the following to your server's virtual hosts file (e.g. '/etc/apache2/extra/httpd-vhosts.conf'):"
+
+    puts %Q{
+      <Directory "#{Dir.getwd}/public/">
+          Allow From All
+          AllowOverride All
+          Options +Indexes
+      </Directory>
+      <VirtualHost *:80>
+          ServerName "#{$development_server_name}"
+          DocumentRoot "#{Dir.getwd}/public"
+      </VirtualHost>
+    }
+
+    out "Congratulations! You've installed and configured Craft. Visit http://#{$development_server_name}/admin to complete user registration.", $notice
   end
 end
 
