@@ -46,7 +46,7 @@ namespace :config do
       out 'At what URL would you like to access your local Craft site (e.g. your-project-name.dev)?', $prompt
       $development_server_name = STDIN.gets.chomp!
 
-      out 'Generating database configuration files...'
+      out "\nGenerating database configuration files..."
 
       out 'What is the server name or IP address of your database (e.g. localhost or 127.0.0.1)?', $prompt
       development_db_server = STDIN.gets.chomp!
@@ -97,7 +97,6 @@ namespace :craft do
         system %Q{curl -s #{$craft_remote_src_url} -o #{$craft_local_src_path}}
       end
       system %Q{unzip -oq #{$craft_local_src_path}}
-      out '✓ Craft successfully downloaded and installed!', $notice
 
       out 'Cleaning up installation files...'
       ['readme.txt', 'craft/config/db.php', 'public/web.config'].each do |filepath|
@@ -119,7 +118,9 @@ namespace :craft do
         system %Q{echo '*\n!.gitignore\n!db_dump.zip\n' > #{backups_path}/.gitignore}
       end
 
-      out 'Configuring Git...'
+      out '✓ Craft successfully downloaded and installed!', $notice
+
+      out "\nConfiguring Git..."
       out 'What is your new project\'s clone URL (e.g. git@github.com:vigetlabs/your-project-name.git)?', $prompt
 
       git_clone_url = STDIN.gets.chomp!
@@ -132,7 +133,7 @@ namespace :craft do
         out "✓ 'origin' is now set to '#{git_clone_url}'!", $notice
       end
 
-      out 'Would you like to continue configuring Craft? [Yn]', $prompt
+      out "\nWould you like to continue configuring Craft? [Yn]", $prompt
       if STDIN.gets.chomp! == 'Y'
         Rake::Task['craft:setup'].invoke
       else
@@ -156,10 +157,12 @@ namespace :craft do
   desc 'Set up Craft for local development'
   task :setup do
     Rake::Task['config:create'].invoke
+    puts "\n"
     Rake::Task['db:create'].invoke
+    puts "\n"
     Rake::Task['craft:set_folder_permissions'].invoke
 
-    out "Add the following to your server's virtual hosts file (e.g. '/etc/apache2/extra/httpd-vhosts.conf'):"
+    out "\nAdd the following to your server's virtual hosts file (e.g. '/etc/apache2/extra/httpd-vhosts.conf'):"
 
     puts %Q{
       <Directory "#{Dir.getwd}/public/">
