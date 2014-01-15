@@ -4,6 +4,7 @@ Instructions for installing and configuring a new [Craft](http://buildwithcraft.
 
 Use of these tools indicates that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read before doing anything else.
 
+
 ## Table of Contents
 
 1. [Dependencies](#dependencies)
@@ -28,6 +29,8 @@ Before you dive in, make sure you have a couple of pieces of information handy:
 1. Your project repository's Git clone URL (e.g. `git@github.com:vigetlabs/your-project-name.git`). During installation, you'll be asked to provide this so that you can `git push` your work to your own repository.
 2. Choose a virtual host name for your local site (e.g. `your-project-name.dev`).
 3. Know your database server's accessible address (e.g. `127.0.0.1` or `localhost`) and the user and password that can access it.
+
+Also, these instructions assume you have a passing familiarity with the command line, MySQL, PHP, and Ruby, and that you're using Mac OS X. This setup will likely work on other systems, but the instructions are geared toward Mac OS X.
 
 
 ## Clone craft-master
