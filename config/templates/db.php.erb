@@ -8,20 +8,28 @@
  */
 
 return array(
+	'*' => array(
+		'tablePrefix' => 'craft',
+	),
 
-	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-	'server' => '<%= db_server %>',
+	'<%= $development_server_name %>' => array(
+		'server' => '<%= development_db_server %>',
+		'user' => '<%= development_db_user %>',
+		'password' => '<%= development_db_password %>',
+		'database' => '<%= development_db_database %>',
+	),
 
-	// The database username to connect with.
-	'user' => '<%= db_user %>',
+	// 'staging.your-project-name.com' => array(
+	// 	'server' => '',
+	// 	'user' => '',
+	// 	'password' => '',
+	// 	'database' => '',
+	// ),
 
-	// The database password to connect with.
-	'password' => '<%= db_password %>',
-
-	// The name of the database to select.
-	'database' => '<%= db_database %>',
-
-	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'craft',
-
+	// 'your-project-name.com' => array(
+	// 	'server' => '',
+	// 	'user' => '',
+	// 	'password' => '',
+	// 	'database' => '',
+	// ),
 );
