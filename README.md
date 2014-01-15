@@ -28,7 +28,7 @@ Before you dive in, make sure you have a couple of pieces of information handy:
 1. Your project repository's Git clone URL (e.g. `git@github.com:vigetlabs/your-project-name.git`). During installation, you'll be asked to provide this so that you can `git push` your work to your own repository.
 2. Choose a virtual host name for your local site (e.g. `your-project-name.dev`).
 3. Know your database server's accessible address (e.g. `127.0.0.1` or `localhost`) and the user and password that can access it.
- 
+
 
 ## Clone craft-master
 
@@ -43,10 +43,9 @@ To get started, issue the following command to clone this repository, substituti
 
 [Homebrew](http://brew.sh/) is the easiest (and best!) way to install MySQL and PHP:
 
-	brew install mysql
 	brew tap homebrew/dupes
 	brew tap josegonzalez/php
-	brew install php54-mcrypt
+	brew install mysql php54-mcrypt
 
 This will also install PHP 5.4 as a dependency. Be sure to follow the instructions listed in the Caveats to enable the mcrypt extension.
 
