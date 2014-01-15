@@ -170,9 +170,13 @@ namespace :db do
   task :drop do
     mysql_connect do |connection, config|
       if connection.list_dbs.include?(config['database'])
-        out 'Dropping database...'
-        connection.query("DROP DATABASE #{config['database']}")
-        out '✓ Database dropped!', $notice
+        out "Are you sure you want to drop the database '#{config['database']}'? [Yn]", $prompt
+
+        if STDIN.gets.chomp! == 'Y'
+          out 'Dropping database...'
+          connection.query("DROP DATABASE #{config['database']}")
+          out '✓ Database dropped!', $notice
+        end
       else
         out "! Database '#{config['database']}' doesn't exist. Aborting database operation...", $alert
       end
