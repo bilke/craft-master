@@ -2,8 +2,6 @@
 
 Instructions for installing and configuring a new [Craft](http://buildwithcraft.com/) project using Ruby and Rake.
 
-Use of these tools indicates that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read before doing anything else.
-
 
 ## Table of Contents
 
@@ -103,4 +101,6 @@ Of course, craft-master wouldn't be possible without the hard work of the fine f
 
 ## License
 
-The source code for and documentation relating to craft-master is licensed under the incredibly permissive [MIT License](http://opensource.org/licenses/MIT).
+Use of these tools indicates that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read. craft-master is not affiliated with Craft or Pixel & Tonic.
+
+The source code and documentation for craft-master is licensed under the incredibly permissive [MIT License](http://opensource.org/licenses/MIT).
