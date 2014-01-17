@@ -3,7 +3,7 @@
 We'd love to have your help improving craft-master! If you'd like to pitch in, you can do so in a number of ways:
 
 1. Look through open [Issues](https://github.com/vigetlabs/craft-master/issues).
-2. Review any open [Pull Requests](https://github.com/vigetlabs/craft-master/pulls)
+2. Review any open [Pull Requests](https://github.com/vigetlabs/craft-master/pulls).
 3. [Fork craft-master](#getting-set-up-to-contribute) and fix an open Issue or add your own feature.
 4. File new Issues if you have a good idea or see a bug and don't know how to fix it yourself. _Only do this after you've made sure the behavior or problem you're seeing isn't already documented in an open Issue._
 
