@@ -98,13 +98,6 @@ namespace :craft do
       end
       system %Q{unzip -oq #{$craft_local_src_path}}
 
-      out 'Cleaning up installation files...'
-      ['readme.txt', 'craft/config/db.php', 'public/web.config'].each do |filepath|
-        if File.exists?(filepath)
-          system %Q{rm #{filepath}}
-        end
-      end
-
       if File.exists?('public/htaccess')
         out 'Creating .htaccess...'
         system %Q{mv public/{,.}htaccess}
@@ -116,6 +109,17 @@ namespace :craft do
         out "Creating backups folder at '#{backups_path}'..."
         system %Q{mkdir #{backups_path}}
         system %Q{echo '*\n!.gitignore\n!db_dump.zip\n' > #{backups_path}/.gitignore}
+      end
+
+      out 'Cleaning up installation files...'
+      ['readme.txt', 'craft/config/db.php', 'public/web.config'].each do |filepath|
+        if File.exists?(filepath)
+          system %Q{rm #{filepath}}
+        end
+      end
+
+      if File.directory?('tmp')
+        system %Q{rm -rf tmp}
       end
 
       out '✓ Craft successfully downloaded and installed!', $notice
