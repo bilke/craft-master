@@ -12,11 +12,11 @@ return array(
 		'tablePrefix' => 'craft',
 	),
 
-	'<%= $development_server_name %>' => array(
-		'server' => '<%= development_db_server %>',
-		'user' => '<%= development_db_user %>',
-		'password' => '<%= development_db_password %>',
-		'database' => '<%= development_db_database %>',
+	'<%= options[:development_server_name] %>' => array(
+		'server' => '<%= options[:development_db_server] %>',
+		'user' => '<%= options[:development_db_user] %>',
+		'password' => '<%= options[:development_db_password] %>',
+		'database' => '<%= options[:development_db_database] %>',
 	),
 
 	// 'staging.your-project-name.com' => array(
