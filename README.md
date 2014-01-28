@@ -1,6 +1,6 @@
 # craft-master
 
-Instructions for installing and configuring a new [Craft](http://buildwithcraft.com/) project using Ruby and Rake.
+Instructions for installing and configuring a new [Craft](http://buildwithcraft.com/) project using Ruby and Rake. For more on the thinking behind craft-master, check out the [introductory blog post](http://viget.com/extend/kickstarting-your-craft-project-with-ruby-and-rake).
 
 
 ## Table of Contents
@@ -101,6 +101,6 @@ Of course, craft-master wouldn't be possible without the hard work of the fine f
 
 ## License
 
-Use of these tools indicates that you have read, understand, and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read. craft-master is not affiliated with Craft or Pixel & Tonic.
+Use of these tools indicates that you have read and accepted Craft's [Terms and Conditions](http://buildwithcraft.com/license). Definitely give those a read. craft-master is not affiliated with Craft or Pixel & Tonic.
 
 The source code and documentation for craft-master is licensed under the incredibly permissive [MIT License](http://opensource.org/licenses/MIT).
