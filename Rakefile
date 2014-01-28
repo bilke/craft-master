@@ -3,7 +3,7 @@ require 'erb'
 require 'mysql'
 require 'yaml'
 
-$craft_remote_src_url = 'http://download.buildwithcraft.com/craft/1.3/1.3.2465/Craft-1.3.2465.zip'
+$craft_remote_src_url = 'http://download.buildwithcraft.com/craft/1.3/1.3.2473/Craft-1.3.2473.zip'
 $craft_local_src_path = "tmp/#{$craft_remote_src_url.split('/').last}"
 
 $craft_db_php_path = 'craft/config/db.php'
