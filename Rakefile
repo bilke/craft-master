@@ -279,6 +279,14 @@ class Database
     new.destroy
   end
 
+  def self.export
+    new.export
+  end
+
+  def self.import
+    new.import
+  end
+
   def create
     mysql_connect do |connection, config|
       if connection.list_dbs.include?(config['database'])
@@ -307,7 +315,45 @@ class Database
     end
   end
 
+  def export
+    mysql_connect do |connection, config|
+      if connection.list_dbs.include?(config['database'])
+        out "Exporting database to '#{craft_backups_zip_path}'..."
+        `mysqldump -u #{config['user']} #{config['database']} > #{craft_backups_sql_path}`
+        `zip -rm9 #{craft_backups_zip_path} #{craft_backups_sql_path}`
+        notify '✓ Database exported!'
+      else
+        alert "! Database '#{config['database']}' doesn't exist. Aborting database operation..."
+      end
+    end
+  end
+
+  def import
+    mysql_connect do |connection, config|
+      if connection.list_dbs.include?(config['database'])
+        if File.exists?(craft_backups_zip_path)
+          out "Importing database from '#{craft_backups_zip_path}'..."
+          `unzip -op #{craft_backups_zip_path} > #{craft_backups_sql_path}`
+          `mysql -u #{config['user']} #{config['database']} < #{craft_backups_sql_path}`
+          notify '✓ Database imported!'
+        else
+          alert "! '#{craft_backups_zip_path}' doesn't exist. Skipping database import..."
+        end
+      else
+        alert "! Database '#{config['database']}' doesn't exist. Aborting database operation..."
+      end
+    end
+  end
+
   private
+  def craft_backups_sql_path
+    "#{CraftInstall::BACKUPS_PATH}/db_dump.sql"
+  end
+
+  def craft_backups_zip_path
+    "#{CraftInstall::BACKUPS_PATH}/db_dump.zip"
+  end
+
   def craft_db_yml_path
     Configuration::CRAFT_DB_YML_PATH
   end
@@ -369,6 +415,16 @@ namespace :db do
   desc 'Drop database'
   task :drop do
     Database.destroy
+  end
+
+  desc 'Export database structure and data to file'
+  task :export do
+    Database.export
+  end
+
+  desc 'Import database structure and data from file'
+  task :import do
+    Database.import
   end
 end
 
