@@ -8,28 +8,9 @@
  */
 
 return array(
-	'*' => array(
-		'tablePrefix' => 'craft',
-	),
-
-	'<%= options[:development_server_name] %>' => array(
-		'server' => '<%= options[:development_db_server] %>',
-		'user' => '<%= options[:development_db_user] %>',
-		'password' => '<%= options[:development_db_password] %>',
-		'database' => '<%= options[:development_db_name] %>',
-	),
-
-	// 'staging.your-project-name.com' => array(
-	// 	'server' => '',
-	// 	'user' => '',
-	// 	'password' => '',
-	// 	'database' => '',
-	// ),
-
-	// 'your-project-name.com' => array(
-	// 	'server' => '',
-	// 	'user' => '',
-	// 	'password' => '',
-	// 	'database' => '',
-	// ),
+	'server' => '<%= options[:db_server] %>',
+	'user' => '<%= options[:db_user] %>',
+	'password' => '<%= options[:db_password] %>',
+	'database' => '<%= options[:db_name] %>',
+	'tablePrefix' => 'craft',
 );

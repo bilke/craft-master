@@ -57,8 +57,8 @@ class Configuration
       return self
     end
 
-    prompt_development_server_name
-    prompt_development_db_settings
+    prompt_server_name
+    prompt_db_settings
 
     self
   end
@@ -69,8 +69,8 @@ class Configuration
     notify '✓ Configuration files removed!'
   end
 
-  def development_server_name
-    options[:development_server_name]
+  def server_name
+    options[:server_name]
   end
 
   def initialize
@@ -87,17 +87,17 @@ class Configuration
     File.exists?(CRAFT_DB_PHP_PATH)
   end
 
-  def prompt_development_db_settings
+  def prompt_db_settings
     notify 'Generating database configuration files...'
 
-    options[:development_db_server] = ask?('What is the server name or IP address of your database (e.g. localhost or 127.0.0.1)?')
-    options[:development_db_user] = ask?('What is the database username?')
-    options[:development_db_password] = ask?("What is the database password for user '#{options[:development_db_user]}'?")
-    options[:development_db_name] = ask?('What is the name of the database?')
+    options[:db_server] = ask?('What is the server name or IP address of your database (e.g. localhost or 127.0.0.1)?')
+    options[:db_user] = ask?('What is the database username?')
+    options[:db_password] = ask?("What is the database password for user '#{options[:db_user]}'?")
+    options[:db_name] = ask?('What is the name of the database?')
   end
 
-  def prompt_development_server_name
-    options[:development_server_name] = ask?('At what URL would you like to access your local Craft site (e.g. your-project-name.dev)?')
+  def prompt_server_name
+    options[:server_name] = ask?('At what URL would you like to access your local Craft site (e.g. your-project-name.dev)?')
   end
 
   def write_db_settings
@@ -232,7 +232,7 @@ class CraftSetup
           Options +Indexes
       </Directory>
       <VirtualHost *:80>
-          ServerName "#{configuration.development_server_name}"
+          ServerName "#{configuration.server_name}"
           DocumentRoot "#{Dir.getwd}/public"
       </VirtualHost>
     }
@@ -245,7 +245,7 @@ class CraftSetup
 
     display_apache_config
 
-    notify "Congratulations! You've installed and configured Craft. Visit http://#{configuration.development_server_name}/admin to complete user registration."
+    notify "Congratulations! You've installed and configured Craft. Visit http://#{configuration.server_name}/admin to complete user registration."
   end
 
   def set_folder_permissions
@@ -360,7 +360,7 @@ class Database
 
   def mysql_connect
     if File.exists?(craft_db_yml_path)
-      config = YAML.load(File.read(craft_db_yml_path))['development']
+      config = YAML.load(File.read(craft_db_yml_path))
 
       begin
         connection = Mysql.new(config['server'], config['user'], config['password'])
