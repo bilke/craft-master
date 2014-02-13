@@ -319,7 +319,7 @@ class Database
     mysql_connect do |connection, config|
       if connection.list_dbs.include?(config['database'])
         out "Exporting database to '#{craft_backups_zip_path}'..."
-        `mysqldump -u #{config['user']} #{config['database']} > #{craft_backups_sql_path}`
+        `mysqldump --user=#{config['user']} --password=#{config['password']} #{config['database']} > #{craft_backups_sql_path}`
         `zip -rm9 #{craft_backups_zip_path} #{craft_backups_sql_path}`
         notify '✓ Database exported!'
       else
@@ -334,7 +334,7 @@ class Database
         if File.exists?(craft_backups_zip_path)
           out "Importing database from '#{craft_backups_zip_path}'..."
           `unzip -op #{craft_backups_zip_path} > #{craft_backups_sql_path}`
-          `mysql -u #{config['user']} #{config['database']} < #{craft_backups_sql_path}`
+          `mysql --user=#{config['user']} --password=#{config['password']} #{config['database']} < #{craft_backups_sql_path}`
           notify '✓ Database imported!'
         else
           alert "! '#{craft_backups_zip_path}' doesn't exist. Skipping database import..."
