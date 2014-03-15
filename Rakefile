@@ -92,6 +92,7 @@ class Configuration
   def prompt_db_settings
     notify 'Generating database configuration files...'
 
+    options[:db_socket] = ask?('What is the socket of the database?')
     options[:db_server] = ask?('What is the server name or IP address of your database (e.g. localhost or 127.0.0.1)?')
     options[:db_user] = ask?('What is the database username?')
     options[:db_password] = ask?("What is the database password for user '#{options[:db_user]}'?")
@@ -365,7 +366,7 @@ class Database
       config = YAML.load(File.read(craft_db_yml_path))
 
       begin
-        connection = Mysql.new(config['server'], config['user'], config['password'])
+        connection = Mysql.new(config['server'], config['user'], config['password'], nil, nil, config['socket'])
 
         yield connection, config
       rescue Mysql::Error => e
