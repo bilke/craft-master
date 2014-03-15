@@ -120,7 +120,7 @@ end
 class CraftInstall
   include Conversable
 
-  REMOTE_SOURCE_URL = 'http://download.buildwithcraft.com/craft/1.3/1.3.2486/Craft-1.3.2486.zip'
+  REMOTE_SOURCE_URL = 'http://download.buildwithcraft.com/craft/1.3/1.3.2507/Craft-1.3.2507.zip'
   LOCAL_SOURCE_PATH = "tmp/#{REMOTE_SOURCE_URL.split('/').last}"
 
   BACKUPS_PATH = 'craft/storage/backups'
