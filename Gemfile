@@ -6,4 +6,5 @@ gem 'rake'
 gem 'mysql'
 
 # Add your project gems here
-gem 'compass'
+gem 'compass', "~> 1.0.0.alpha.19"
+gem 'susy'
