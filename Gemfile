@@ -9,3 +9,4 @@ gem 'mysql'
 gem 'compass', "~> 1.0.0.alpha.19"
 gem 'susy'
 gem 'breakpoint'
+gem 'compass-normalize'

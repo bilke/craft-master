@@ -1,8 +1,9 @@
 # Require any additional compass plugins here.
 require 'rubygems'
 require 'bundler/setup'
-require "susy"
-require "breakpoint"
+require 'susy'
+require 'breakpoint'
+require 'compass-normalize'
 
 # Set this to the root of your project when deployed:
 http_path = "/"

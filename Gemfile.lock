@@ -17,6 +17,8 @@ GEM
       sass (>= 3.3.0, < 3.5)
     compass-import-once (1.0.3)
       sass (>= 3.2, < 3.5)
+    compass-normalize (1.5)
+      compass (>= 0.12.0)
     ffi (1.9.3)
     json (1.8.1)
     listen (1.1.6)
@@ -44,6 +46,7 @@ PLATFORMS
 DEPENDENCIES
   breakpoint
   compass (~> 1.0.0.alpha.19)
+  compass-normalize
   mysql
   rake
   susy
