@@ -6,3 +6,4 @@ gem 'rake'
 gem 'mysql'
 
 # Add your project gems here
+gem 'compass'

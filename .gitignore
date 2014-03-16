@@ -6,6 +6,7 @@ config/database.yml
 craft/config/db.php
 tmp/
 /.bundle/
+/bin/
 /craft/storage/logo/
 /craft/storage/runtime/
 /craft/storage/userphotos/
