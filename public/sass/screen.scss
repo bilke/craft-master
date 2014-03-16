@@ -5,6 +5,7 @@
 
 @import "compass/reset";
 @import "susy";
+@import "breakpoint";
 
 nav { @include span(25%); }
 main { @include span(75%); }
