@@ -3,7 +3,6 @@
 .rvmrc
 .sass-cache
 config/database.yml
-craft/config/db.php
 tmp/
 /.bundle/
 /bin/
