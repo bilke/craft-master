@@ -191,7 +191,7 @@ class CraftInstall
   end
 
   def craft_installed?
-    File.directory?('craft') && File.directory?('public')
+    File.directory?('craft/app') && File.directory?('public')
   end
 
   def create_backups_folder

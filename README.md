@@ -75,6 +75,8 @@ Run `bundle` to install all required gems.
 
 After starting up your local web and MySQL servers, run `rake install` and follow the prompts.
 
+**Note**: If you use MySQL from [Boxen](https://github.com/boxen) use this socket `/opt/boxen/data/mysql/socket`.
+
 You'll be asked for a clone URL to your project's Git repository (e.g. `git@github.com:vigetlabs/craft-master.git`) and some basic database-related questions. Most everything else is automated.
 
 Craft will download, install, and create configuration files based on your input.
@@ -84,6 +86,10 @@ Craft will download, install, and create configuration files based on your input
 For Craft to work, you'll need to set up a virtual host with a `ServerName` of `http://your-project-name.dev` and a `DocumentRoot` pointed at the `public` folder in your working directory.
 
 For convenience, the installer will output a sample bit of code for you to insert into your server's virtual hosts file (which, depending on your setup, may be located at `/etc/apache2/extra/httpd-vhosts.conf`).
+
+Add an entry to `/etc/hosts`: `127.0.0.1 your-project-name.dev`
+
+Restart apache with `sudo apachectl restart`.
 
 ### Finish Craft installation
 
